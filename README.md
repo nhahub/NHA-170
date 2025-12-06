@@ -1,160 +1,91 @@
-# 📘 Sentiment Analyzer (Streamlit + MongoDB + Logistic Regression)
+# Create a clean README.md file without any code snippets or file structure
+readme_clean_text = """# 📘 Sentiment Analyzer (Streamlit + MongoDB + Logistic Regression)
 
-A comprehensive web application for analyzing customer review sentiment (Positive / Neutral / Negative) using:
-
-* **Streamlit** (Web UI)
-* **MongoDB** (Database)
-* **Logistic Regression** (Machine Learning Model)
-* **TF-IDF Vectorizer**
+A simple and powerful web application for analyzing customer review sentiment (Positive / Neutral / Negative) using:  
+- **Streamlit** (Web UI)  
+- **MongoDB** (Database)  
+- **Logistic Regression** (Machine Learning Model)  
+- **TF-IDF Vectorizer**
 
 ---
 
 ## 🚀 Features
 
-* **Single Review Prediction**: Enter a review and the ML model predicts its sentiment with a confidence score.
-* **Batch CSV Upload**: Upload a CSV file with a `Text` column to analyze multiple reviews at once.
-* **MongoDB Storage**: All reviews (original text, cleaned text, predicted sentiment) are saved in MongoDB.
-* **Analytics Dashboard**: Visualize sentiment distribution with bar and pie charts and view recent reviews.
-
----
-
-## 🏗 Project Structure
-
-```
-project/
-├── app.py                 # Main Streamlit application
-├── model.pkl              # Trained Logistic Regression model
-├── vectorizer.pkl         # TF-IDF vectorizer
-├── utils.py               # Helper functions (text cleaning, MongoDB connection)
-├── requirements.txt       # Python dependencies
-└── README.md              # Project documentation
-```
+- **Single Review Prediction**: Enter a review and the ML model predicts its sentiment with a confidence score.  
+- **Batch CSV Upload**: Upload a CSV file with a `Text` column to analyze multiple reviews at once.  
+- **MongoDB Storage**: All reviews (original text, cleaned text, predicted sentiment) are saved in MongoDB.  
+- **Analytics Dashboard**: Visualize sentiment distribution with bar and pie charts and view recent reviews.
 
 ---
 
 ## 🛠 Installation
 
-### 1️⃣ Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### 2️⃣ Run the application
-
-```bash
-streamlit run app.py
-```
+Install the required dependencies and run the Streamlit app to start using the application.
 
 ---
 
 ## 🗄 MongoDB Setup
 
-Update your MongoDB connection details in the code or via a `.env` file:
-
-```python
-MONGO_URL = "mongodb+srv://username:password@cluster-url.mongodb.net/"
-DB_NAME = "sentiment_db"
-COLLECTION_NAME = "reviews"
-```
+Set your MongoDB connection details to store and retrieve the reviews. This ensures that all analyzed reviews are saved and can be used for analytics.
 
 ---
 
-## 🤖 How the Model Works (Logistic Regression)
+## 🤖 How the Model Works
 
-1. **Text Cleaning**:
-
-   * Convert text to lowercase
-   * Remove punctuation and special characters
-   * Remove stopwords
-
-2. **Text Vectorization using TF-IDF**:
-
-```python
-from sklearn.feature_extraction.text import TfidfVectorizer
-
-vectorizer = TfidfVectorizer()
-X_vec = vectorizer.fit_transform(cleaned_texts)
-```
-
-3. **Train Logistic Regression Model**:
-
-```python
-from sklearn.linear_model import LogisticRegression
-
-model = LogisticRegression(max_iter=1000)
-model.fit(X_train, y_train)
-```
-
-4. **Predict Sentiment**:
-
-```python
-X_new = vectorizer.transform([new_review])
-prediction = model.predict(X_new)[0]           # Predicted sentiment
-confidence = model.predict_proba(X_new).max()  # Confidence score
-```
-
-5. **Save results to MongoDB** and display in Streamlit.
+1. **Text Cleaning**: Converts text to lowercase, removes punctuation and stopwords.  
+2. **Vectorization**: Converts the cleaned text into numeric representations for the model.  
+3. **Logistic Regression Prediction**: The model predicts the sentiment of the text and provides a confidence score.  
+4. **Save Results**: All processed reviews are stored in MongoDB and can be displayed in the analytics dashboard.
 
 ---
 
 ## 📤 Batch CSV Upload
 
-* The CSV must contain a column named `Text`.
-* The app will clean text, predict sentiment for each row, and save results to MongoDB.
-* Displays processed data in a table after uploading.
-
-Example CSV:
-
-```csv
-Text
-This product is amazing!
-I didn't like the service.
-It was okay.
-```
+- Upload a CSV file containing a column named `Text`.  
+- The app will process all reviews, predict their sentiment, save them to MongoDB, and display the processed data.  
 
 ---
 
 ## 📈 Analytics Page
 
-The Analytics section provides:
-
-* Total number of reviews analyzed
-* Most common sentiment
-* Sentiment distribution (Bar and Pie charts)
-* Recent 10 reviews from MongoDB
+The Analytics page shows:  
+- Total number of reviews analyzed  
+- Most common sentiment  
+- Sentiment distribution in charts  
+- Recent reviews from MongoDB  
 
 ---
 
 ## 🧹 Cache Refresh
 
-After saving data, Streamlit cache is cleared:
-
-```python
-st.cache_data.clear()
-```
-
-This ensures analytics always reflect the latest data.
+The app ensures that the displayed analytics are always up-to-date after new reviews are saved.
 
 ---
 
 ## 🧑‍💻 Built With
 
-* Python 3.10+
-* Streamlit
-* MongoDB Atlas
-* scikit-learn (Logistic Regression)
-* pandas
-* plotly
+- Python 3.10+  
+- Streamlit  
+- MongoDB Atlas  
+- scikit-learn (Logistic Regression)  
+- pandas  
+- plotly  
 
 ---
 
 ## 📧 Support & Contributions
 
-Feel free to contribute or suggest improvements:
+You can contribute or suggest improvements in areas like:  
+- Model performance enhancements  
+- User interface improvements  
+- Deployment on Streamlit Cloud, Docker, or Render  
 
-* Enhance ML model performance
-* Improve UI/UX
-* Deployment on Streamlit Cloud, Docker, or Render
+For questions, feedback, or collaboration, contact the developer.
+"""
 
-For issues, feedback, or collaboration, please contact the d
+# Save as a README.md file
+output_clean_path = "/mnt/data/README.md"
+with open(output_clean_path, "w", encoding="utf-8") as f:
+    f.write(readme_clean_text)
+
+output_clean_path
